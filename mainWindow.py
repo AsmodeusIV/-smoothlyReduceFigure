@@ -27,8 +27,3 @@ class MainWindow:
     def run(self):
         self.animate()  # Запускаем анимацию
         self.root.mainloop()
-
-# Запуск приложения
-if __name__ == "__main__":
-    app = MainWindow()
-    app.run()
