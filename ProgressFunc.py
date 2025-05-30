@@ -1,3 +1,5 @@
 class Progress:
     def __init__(self):
-        self.start = 0
+        self.x = 0
+    def next(self):
+        pass
