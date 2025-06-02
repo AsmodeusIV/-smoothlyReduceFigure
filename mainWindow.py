@@ -1,6 +1,6 @@
 import tkinter as tk
 from figure import Circle
-from ProgressFunc import ProgressLinear
+from ProgressFunc import ProgressLinear, ProgressQuadratic
 
 
 class MainWindow:
@@ -15,7 +15,7 @@ class MainWindow:
         self.circle = Circle(400, 300, 250)
         self.circle.newCord(200, 200, 150)
         self.progress = 0
-        self.progressFunc = ProgressLinear()
+        self.progressFunc = ProgressQuadratic()
         
     def animate(self):
         if self.progress <= 1:
