@@ -1,6 +1,6 @@
 import tkinter as tk
 from figure import Circle
-from ProgressFunc import ProgressLinear, ProgressQuadratic
+from ProgressFunc import ProgressLinear, ProgressQuadratic, ProgressTan
 
 
 class MainWindow:
@@ -15,7 +15,7 @@ class MainWindow:
         self.circle = Circle(400, 300, 250)
         self.circle.newCord(200, 200, 150)
         self.progress = 0
-        self.progressFunc = ProgressQuadratic()
+        self.progressFunc = ProgressTan()
         
     def animate(self):
         if self.progress <= 1:
@@ -24,7 +24,6 @@ class MainWindow:
             self.circle.reduce(self.progress)
             self.progress = self.progressFunc.next(self.dx)
 
-            
             # Планируем следующий кадр анимации через 16 мс (~60 FPS)
             self.root.after(16, self.animate)
         
