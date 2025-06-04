@@ -43,3 +43,33 @@ class Circle(Figure):
         self.dr = r - self.radius 
         self.startRadius = self.radius
         self.newRadius = y
+
+
+class Stone(Figure):
+    def __init__(self, x: float, y: float, radius: float, sides: int = 6):
+        super().__init__(x, y)
+        self.radius = radius
+        self.sides = sides  # Количество сторон (по умолчанию 6 - шестиугольник)
+        self.color = "gray"  # Цвет камня по умолчанию
+
+    def draw(self, canvas):
+        points = []
+        for i in range(self.sides):
+            angle = 2 * math.pi * i / self.sides
+            x = self.centerX + self.radius * math.cos(angle)
+            y = self.centerY + self.radius * math.sin(angle)
+            points.extend([x, y])
+        canvas.create_polygon(points, outline="black", fill=self.color)
+
+    def set_color(self, color: str):
+        self.color = color
+
+    def reduce(self, procent):
+        super().reduce(procent)
+        self.radius = max(0, self.startRadius + self.dr * procent)
+
+    def newCord(self, x, y, r):
+        super().newCenter(x, y)
+        self.dr = r - self.radius
+        self.startRadius = self.radius
+        self.newRadius = r

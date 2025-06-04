@@ -1,5 +1,5 @@
 import tkinter as tk
-from figure import Circle
+from figure import Circle, Stone
 from ProgressFunc import ProgressLinear, ProgressQuadratic, ProgressTan
 
 
@@ -12,16 +12,18 @@ class MainWindow:
         self.canvas.pack(fill=tk.BOTH, expand=True)
         
         # Создаем окружность
-        self.circle = Circle(400, 300, 250)
-        self.circle.newCord(200, 200, 150)
+        #self.circle = Circle(400, 300, 250)
+        #self.circle.newCord(200, 200, 150)
+        self.figure = Stone(400,300,250,6)
+        self.figure.newCord(200, 200, 150)
         self.progress = 0
         self.progressFunc = ProgressTan()
         
     def animate(self):
         if self.progress <= 1:
             self.canvas.delete("all")
-            self.circle.draw(self.canvas)
-            self.circle.reduce(self.progress)
+            self.figure.draw(self.canvas)
+            self.figure.reduce(self.progress)
             self.progress = self.progressFunc.next(self.dx)
 
             # Планируем следующий кадр анимации через 16 мс (~60 FPS)
