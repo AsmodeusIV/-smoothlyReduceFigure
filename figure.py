@@ -46,7 +46,7 @@ class Circle(Figure):
 
 
 class Stone(Figure):
-    def __init__(self, x: float, y: float, radius: float, sides: int = 6):
+    def __init__(self, x: float, y: float, radius: float, sides: int = 7):
         super().__init__(x, y)
         self.radius = radius
         self.sides = sides  # Количество сторон (по умолчанию 6 - шестиугольник)
